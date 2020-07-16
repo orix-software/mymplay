@@ -26,7 +26,6 @@ SOURCE=src/$(PROGRAM).c
 ifdef TRAVIS_BRANCH
 ifeq ($(TRAVIS_BRANCH), master)
 RELEASE:=$(shell cat VERSION)
-RELEASE:=$(shell cat VERSION)
 else
 RELEASE:=alpha
 endif
@@ -37,9 +36,10 @@ endif
 MYDATE = $(shell date +"%Y-%m-%d %H:%m")
   
 code: $(SOURCE)
-	xa -v -R -cc src\mymDbug.s -o src\mymplayer.o -DTARGET_FILEFORMAT_O65 -DTARGET_ORIX
-	co65  src\mymplayer.o -o src\mymcc65.s
-	$(CC) -ttelestrat src/mym.c src\mymcc65.s -o build\bin\mym
+	mkdir -p build/bin/
+	xa -v -R -cc src/mymDbug.s -o src/mymplayer.o -DTARGET_FILEFORMAT_O65 -DTARGET_ORIX
+	co65  src/mymplayer.o -o src/mymcc65.s
+	$(CC) -ttelestrat src/mym.c src/mymcc65.s -o build/bin/mym
 
 srccode: $(SOURCE)
 	mkdir -p build/usr/src/$(PROGRAM)/
