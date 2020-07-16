@@ -61,6 +61,7 @@ test:
 	#cp $(PROGRAM) build/bin/
 	cp Makefile build/usr/src/$(PROGRAM)/
 	cp configure build/usr/src/$(PROGRAM)/	
+	cp data/* build/usr/share/$(PROGRAM)/	 -adpR
 	cp README.md build/usr/src/$(PROGRAM)/	
 	cp src/* build/usr/src/$(PROGRAM)/src/ -adpR
 	cd build && tar -c * > ../$(PROGRAM).tar &&	cd ..
