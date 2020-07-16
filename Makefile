@@ -58,7 +58,7 @@ test:
 	mkdir -p build/usr/src/$(PROGRAM)/src/
 	
 	mkdir -p build/bin/
-	cp $(PROGRAM) build/bin/
+	#cp $(PROGRAM) build/bin/
 	cp Makefile build/usr/src/$(PROGRAM)/
 	cp configure build/usr/src/$(PROGRAM)/	
 	cp README.md build/usr/src/$(PROGRAM)/	
