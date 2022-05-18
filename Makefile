@@ -34,7 +34,7 @@ code: $(SOURCE)
 	bin/xa -v -R -cc src/mymDbug.s -o src/mymplayer.o -DTARGET_FILEFORMAT_O65 -DTARGET_ORIX
 	$(CO)  src/mymplayer.o -o src/mymcc65.s
 	$(CC) -ttelestrat src/mymplay.c src/mymcc65.s -o build/bin/mymplay
-	mkdir build/usr/share/mymplay -p
+	mkdir build/usr/share/man -p
 	cp data/* build/usr/share/mymplay -r
 	@echo "Create .hlp"
 	cat docs/mymplay.md | ../md2hlp/src/md2hlp.py3  > build/usr/share/man/mymplay.hlp
