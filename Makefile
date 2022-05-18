@@ -28,6 +28,7 @@ SOURCE=src/$(PROGRAM).c
 
 code: $(SOURCE)
 	mkdir -p build/bin/
+	chmod +x bin/xa
 	bin/xa -v -R -cc src/mymDbug.s -o src/mymplayer.o -DTARGET_FILEFORMAT_O65 -DTARGET_ORIX
 	co65  src/mymplayer.o -o src/mymcc65.s
 	$(CC) -ttelestrat src/mymplay.c src/mymcc65.s -o build/bin/mymplay
