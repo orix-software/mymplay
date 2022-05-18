@@ -38,7 +38,7 @@ code: $(SOURCE)
 	mkdir build/usr/share/mymplay -p
 	cp data/* build/usr/share/mymplay -r
 	@echo "Create .hlp"
-	cat docs/mymplay.md | ../md2hlp/src/md2hlp.py3  > build/usr/share/man/mymplay.hlp
+	cat docs/mymplay.md | ../md2hlp/src/md2hlp.py3 -c docs/md2hlp.cfg  > build/usr/share/man/mymplay.hlp
 
 
 
