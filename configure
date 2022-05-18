@@ -1,0 +1,6 @@
+#! /bin/sh
+VERSION=1.0.1
+echo Setting version : $VERSION
+echo #define VERSION "$VERSION" > src\version.h
+mkdir build
+echo up4 
