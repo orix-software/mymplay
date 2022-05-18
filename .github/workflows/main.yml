@@ -73,7 +73,6 @@ jobs:
         if: steps.cache-sdk.outputs.cache-hit != 'true'
         working-directory: orix-sdk
         run: |
-          apt-get install libncurses6
           mkdir -p build/{lib,bin} && CC65_HOME=${GITHUB_WORKSPACE}/cc65 make lib
 
       - name: Display tools
@@ -117,7 +116,9 @@ jobs:
         run: mv cc65 ../ && mv orix-software ../ && mv orix-sdk ../ && mv md2hlp ../
 
       - name: Compile project
-        run: CC65_HOME=${GITHUB_WORKSPACE}/../cc65 make
+        run: |
+          apt-get install libncurses6
+          CC65_HOME=${GITHUB_WORKSPACE}/../cc65 make
 
       - name: List build directory content
         run: ls -lR build
