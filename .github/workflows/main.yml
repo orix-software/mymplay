@@ -68,10 +68,13 @@ jobs:
           echo "src/include" >> .git/info/sparse-checkout
           git checkout
 
+
       - name: Compile orix-sdk
         if: steps.cache-sdk.outputs.cache-hit != 'true'
         working-directory: orix-sdk
-        run: mkdir -p build/{lib,bin} && CC65_HOME=${GITHUB_WORKSPACE}/cc65 make lib
+        run: |
+          apt-get install libncurses6
+          mkdir -p build/{lib,bin} && CC65_HOME=${GITHUB_WORKSPACE}/cc65 make lib
 
       - name: Display tools
         run: |
