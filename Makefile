@@ -27,13 +27,7 @@ code: $(SOURCE)
 	@echo "Create .hlp"
 	cat docs/mymplay.md | ../md2hlp/src/md2hlp.py3  > build/usr/share/man/mymplay.hlp
 
-srccode: $(SOURCE)
-	mkdir -p build/usr/src/$(PROGRAM)/
-	mkdir -p build/usr/src/$(PROGRAM)/src/
-	cp configure build/usr/src/$(PROGRAM)/
-	cp Makefile build/usr/src/$(PROGRAM)/
-	cp README.md build/usr/src/$(PROGRAM)/
-	cp -adpR src/* build/usr/src/$(PROGRAM)/src/
+
 
 test:
 	mkdir -p build/usr/share/$(PROGRAM)/
