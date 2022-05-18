@@ -11,9 +11,8 @@ MD2HLP_PATH = ../../md2hlp/src/
 MD2HLP = $(MD2HLP_PATH)/md2hlp.py
 
 
-all : srccode code
+all : code
 .PHONY : all
-
 
 SOURCE=src/$(PROGRAM).c
 
