@@ -2,36 +2,30 @@ AS=xa
 CC=cl65
 CFLAGS=-ttelestrat
 LDFILES=
-PROGRAM=mym
+PROGRAM=mymplay
 LDFILES=src/eeprom.s src/_display_signature_bank.s src/loadfile.s
 
 
-ifdef TRAVIS_BRANCH
-ifeq ($(TRAVIS_BRANCH), master)
-RELEASE:=$(shell cat VERSION)
-else
-RELEASE=alpha
-endif
-endif
+MAN_PATH = $(BUILD_PATH)/usr/share/man
+MD2HLP_PATH = ../../md2hlp/src/
+MD2HLP = $(MD2HLP_PATH)/md2hlp.py
 
 
 all : srccode code
 .PHONY : all
 
-HOMEDIR=/home/travis/bin/
 
 SOURCE=src/$(PROGRAM).c
 
-
-
-
-MYDATE = $(shell date +"%Y-%m-%d %H:%m")
-
 code: $(SOURCE)
 	mkdir -p build/bin/
-	xa -v -R -cc src/mymDbug.s -o src/mymplayer.o -DTARGET_FILEFORMAT_O65 -DTARGET_ORIX
+	bin/xa -v -R -cc src/mymDbug.s -o src/mymplayer.o -DTARGET_FILEFORMAT_O65 -DTARGET_ORIX
 	co65  src/mymplayer.o -o src/mymcc65.s
 	$(CC) -ttelestrat src/mym.c src/mymcc65.s -o build/bin/mymplay
+	mkdir build/usr/share/mymplay -p
+	cp data/* build/usr/share/mymplay -r
+	@echo "Create .hlp"
+	cat docs/mymplay.md | ../md2hlp/src/md2hlp.py3  > build/usr/share/man/mymplay.hlp
 
 srccode: $(SOURCE)
 	mkdir -p build/usr/src/$(PROGRAM)/
