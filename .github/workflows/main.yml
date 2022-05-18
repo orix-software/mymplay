@@ -117,7 +117,7 @@ jobs:
 
       - name: Compile project
         run: |
-          apt-get install libncurses6
+          sudo apt-get install libncurses6
           CC65_HOME=${GITHUB_WORKSPACE}/../cc65 make
 
       - name: List build directory content
